@@ -3,8 +3,8 @@ package ar.com.sistema.clase01;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,15 +12,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("stirng",getString(R.string.add_name));
 
-        Button btn = super.findViewById(R.id.btnGuardar);
+        String s = getString(R.string.add_name);
 
-        btn.setOnClickListener(new MyClickListener(this));
+        PersonaModel modelo =new PersonaModel();
+        PersonaController controller = new PersonaController(modelo);
+        PersonaView view = new PersonaView(modelo,this,controller);
+        controller.setView(view);
+
+   }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("onStart","Estoy en el onStart");
 
 
+    }
 
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("onResume","Estoy en el onResume");
 
     }
 }

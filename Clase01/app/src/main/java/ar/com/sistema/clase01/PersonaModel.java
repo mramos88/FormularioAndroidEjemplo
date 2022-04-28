@@ -1,6 +1,6 @@
 package ar.com.sistema.clase01;
 
-class Persona {
+class PersonaModel {
    private String nombre;
    private String apellido;
    private Integer dni;
